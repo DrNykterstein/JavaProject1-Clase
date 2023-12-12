@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Factura {
+    private static int contadorId=1;
     private int id;
     private Date fecha;
     private String cedulaCliente;
@@ -13,11 +14,13 @@ public class Factura {
     private List<Integer> idProductos;
     /*constructor */
     public Factura(){
+        id=contadorId;
+        contadorId++;
         idProductos = new ArrayList<>();
     }
     /*Inicializo los atributos de la clase factura */
     public Factura(String cedulaCliente,double impuesto){
-        this();
+        this();/*llamo al constructor */
         fecha = new Date();
         this.cedulaCliente=cedulaCliente;
         this.impuesto=impuesto;
