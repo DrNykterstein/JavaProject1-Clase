@@ -1,4 +1,4 @@
-package ve.leota.modelos;
+package modelos;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,7 +11,7 @@ public class Factura {
     private String cedulaCliente;
     private double impuesto;
     private double total;
-    private List<Integer> idProductos;
+    private List<Integer> idProductos;//Array
     /*constructor */
     public Factura(){
         id=contadorId;

@@ -1,4 +1,4 @@
-package ve.leota.modelos;
+package modelos;
 
 public class Productos {
     private int id;

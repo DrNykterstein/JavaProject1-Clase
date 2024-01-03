@@ -1,28 +1,36 @@
-package ve.leota.app;
+package app;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import modelos.Proveedor;
+import modelos.Cliente;
+import modelos.Factura;
+import modelos.Productos;
 
-import ve.leota.modelos.Proveedor;
 
 public class Aplicacion {
-    /*constate */
+	 /*constates menu principal */
     private static final int SALIR = 0;
     private static final int GESTION_CLIENTES = 1;
     private static final int GESTION_PROVEEDORES = 2;
     private static final int GESTION_PRODUCTOS = 3;
     private static final int GESTION_FACTURACION = 4;
-
+    /* constates sub menu */
+    private static final int CREAR = 1;
+    private static final int BUSCAR = 2;
+    private static final int ACTUALIZAR = 3;
+    private static final int ELIMINAR = 4;
     /*Variable del tipo Scanner */
     public static Scanner teclado;
     public static void main(String[] args){
         teclado = new Scanner(System.in);
         List<Cliente> clientes = new ArrayList<>();
         List<Proveedor> proveedores = new ArrayList<>();
-        List<Producto> productos = new ArrayList<>();
+        List<Productos> productos = new ArrayList<>();
         List<Factura> facturas = new ArrayList<>();
         int opcion;
+        int opcionSubMenu;
         do{
             do{
                 mostrarMenu();
@@ -32,8 +40,51 @@ public class Aplicacion {
                 }
 
             }while(opcion < SALIR || opcion > GESTION_FACTURACION);
-        }while(opcion != SALIR);
-    }
+            if(opcion == SALIR) {
+            	break;
+            }
+            
+            switch(opcion) {
+            	case GESTION_CLIENTES:
+            		do {
+            			mostrarSubMenu("Clientes");
+            			opcionSubMenu = capturarEntero("Que desea hacer? ");
+            			if(opcionSubMenu < SALIR || opcionSubMenu > ELIMINAR) {
+            				System.out.println("Error , el numero no esta en el rango");
+            			}
+            		}while(opcionSubMenu < SALIR || opcion > ELIMINAR);
+            		
+            		if(opcionSubMenu == SALIR) {
+            			break;
+            		}
+            		/*Se lee la opcion del menu de Gestion Clientes*/
+            		switch(opcionSubMenu) {
+            			case CREAR:
+            				break;
+            			
+            			case BUSCAR:
+            				break;
+            			case ACTUALIZAR:
+            				break;
+            			case ELIMINAR:
+            				break;
+            				
+            		}
+            		break;/* gestion clientes cierre */
+            	case GESTION_PROVEEDORES:
+            		
+            		break;
+            		
+            	case GESTION_PRODUCTOS:
+            		
+            		break;
+            		
+            	case GESTION_FACTURACION:
+            		
+            		break;
+            }/*Case */
+        }while(opcion != SALIR);/* cierre del do while */
+    }/* main */
 
     /* Menu de principal de usuario */
     public static void mostrarMenu(){
@@ -45,7 +96,7 @@ public class Aplicacion {
         System.out.println("0- Salir"); 
     }
     /*Sub Menu */
-    public static void mostrarSubmenu(String tipoMenu) {
+    public static void mostrarSubMenu(String tipoMenu) {
         System.out.printf("*** Menu Gestion %s ***\n",tipoMenu);
         System.out.println("1- Crear");
         System.out.println("2- Buscar");
@@ -65,7 +116,7 @@ public class Aplicacion {
     public static String capturarCaracteres(String mensaje){
         String resultado;
         while(true){
-            resultado = teclado.nextLine().strip();/*Strip remueve espacioes en la cadena */
+            resultado = teclado.nextLine().strip();/*Strip remueve espacios en la cadena */
             /*Si la cadena no esta vacia */
             if(!resultado.isEmpty()){
                 return resultado;
@@ -96,3 +147,4 @@ public class Aplicacion {
         }
     }
 }
+

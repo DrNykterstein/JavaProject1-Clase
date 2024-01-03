@@ -1,45 +1,45 @@
-package ve.leota.modelos;
+package modelos;
 
 public class Proveedor {
-   private int id;
-   private String nombre;
-   private String direccion;
-   private String telefono;
-   
-   /*Constructor */
-   public Proveedor(){
-   }
-   /* inicializo los atributos de la clase */
-   public Proveedor(int id, String nombre, String direccion, String telefono){
-        this.id=id;
-        this.nombre=nombre;
-        this.direccion=direccion;
-        this.telefono=telefono;
-   }
+	   private int id;
+	   private String nombre;
+	   private String direccion;
+	   private String telefono;
+	   
+	   /*Constructor */
+	   public Proveedor(){
+	   }
+	   /* inicializo los atributos de la clase */
+	   public Proveedor(int id, String nombre, String direccion, String telefono){
+	        this.id=id;
+	        this.nombre=nombre;
+	        this.direccion=direccion;
+	        this.telefono=telefono;
+	   }
 
-   /*Metodos get y set */
-   public int getId(){
-        return id;
-   }
-   public void setId(int id){
-        this.id=id;
-   }
-   public String getNombre(){
-        return nombre;
-   }
-   public void setNombre(String nombre){
-        this.nombre=nombre;
-   }
-   public String getDireccion(){
-        return direccion;
-   }
-   public void setDireccion(String direccion){
-        this.direccion=direccion;
-   }
-   public String getTelefono(){
-        return telefono;
-   }
-   public void setTelefono(String telefono){
-        this.telefono=telefono;
-   }
+	   /*Metodos get y set */
+	   public int getId(){
+	        return id;
+	   }
+	   public void setId(int id){
+	        this.id=id;
+	   }
+	   public String getNombre(){
+	        return nombre;
+	   }
+	   public void setNombre(String nombre){
+	        this.nombre=nombre;
+	   }
+	   public String getDireccion(){
+	        return direccion;
+	   }
+	   public void setDireccion(String direccion){
+	        this.direccion=direccion;
+	   }
+	   public String getTelefono(){
+	        return telefono;
+	   }
+	   public void setTelefono(String telefono){
+	        this.telefono=telefono;
+	   }
 }

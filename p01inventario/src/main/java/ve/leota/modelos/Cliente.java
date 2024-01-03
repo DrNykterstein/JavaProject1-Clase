@@ -1,7 +1,7 @@
-package ve.leota.modelos;
+package modelos;
 
 public class Cliente {
-    //Declaro los atributos del cliente
+	//Declaro los atributos del cliente
     private String cedula;
     private String nombre;
     private String apellido;
