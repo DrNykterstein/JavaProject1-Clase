@@ -60,6 +60,7 @@ public class Aplicacion {
             		/*Se lee la opcion del menu de Gestion Clientes*/
             		switch(opcionSubMenu) {
             			case CREAR:
+            				crearCliente(clientes);
             				break;
             			
             			case BUSCAR:
@@ -86,7 +87,64 @@ public class Aplicacion {
         }while(opcion != SALIR);/* cierre del do while */
     }/* main */
 
-    /* Menu de principal de usuario */
+    private static void crearCliente(List<Cliente> clientes) {
+		//Muestro el mensaje de informacion
+    	System.out.println("-----Crear Cliente-----");
+    	int numeroCedula;
+    	int numeroTelefono;
+    	String cedula;
+    	String nombres;
+    	String apellidos;
+    	String direccion;
+    	String correoElectronico;
+    	do {
+    		numeroCedula = capturarEntero("Cual es su numero de cedula? ");
+    		if(numeroCedula<=0) {
+    			System.out.println("Cedula incorrecta ");
+    			numeroCedula=0;
+    			continue;
+    		}
+    		cedula = String.valueOf(numeroCedula);
+    		Cliente cliente = buscarClientePorCedula(clientes,cedula);
+    		if(cliente != null) {
+    			System.out.println("Ya existe esa numero de cedula");
+    			numeroCedula=0;
+    		}
+    	}while(numeroCedula<=0);
+    	/* solicito informacion al usuario */
+    	nombres = capturarCaracteres("Cual es el nombre del cliente? ");
+    	apellidos = capturarCaracteres("Cual es el apellido del cliente? ");
+    	/*validacion del numero de telefono */
+    	do {
+    		numeroTelefono = capturarEntero("Cual es el numero de telefono? ");
+    		if(numeroTelefono <= 0) {
+    			System.out.println("Error, numero de telefono invalido");
+    		}
+    	}while(numeroTelefono <= 0);
+    	/*direccion */
+    	direccion = capturarCaracteres("Cual es su direccion? ");
+    	/* validamos el correo electronico */
+    	while(true){
+    		correoElectronico = capturarCaracteres("Cual es el correo ? ");
+    		if(!validarCorreo(correoElectronico)) {
+    			System.out.println("Correo no valido, no mames wey");
+    			continue;
+    		}
+    		break;
+    	}
+    	
+	}
+    /* Funcion para buscar un cliente por numero de cedula */
+	private static Cliente buscarClientePorCedula(List<Cliente> clientes, String cedula) {
+		for (Cliente cliente : clientes) {
+			if(cliente.getCedula().equals(cedula)) {
+				return cliente;
+			}
+		}
+		return null;
+	}
+
+	/* Menu de principal de usuario */
     public static void mostrarMenu(){
         System.out.println("--- Menu Principal ---");
         System.out.println("1- Gestion Clientes");
@@ -146,5 +204,11 @@ public class Aplicacion {
             }
         }
     }
+    
+    /* Validacion de email */ 
+    static boolean validarCorreo(String correo) {
+        String regex = "^[\w-_\.+]*[\w-_\.]\@([\w]+\.)+[\w]+[\w]$";
+        return correo.matches(regex);
+     }
 }
 
